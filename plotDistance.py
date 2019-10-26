@@ -3,13 +3,16 @@
 import pylab as py
 
 import sys
+try :
+    from importlib import reload
+except ImportError:
+    from imp import reload
 import matplotlib.pyplot as plt
 import numpy as np
 from math import sqrt
 
 #Pour l'encodage des caractères acentués
 reload(sys)
-sys.setdefaultencoding('utf8')
 
 def kl(p, q):
     """Kullback-Leibler divergence D(P || Q) for discrete distributions
@@ -52,10 +55,10 @@ for ligne in fichier:
 	try:
 		tab=ligne.split("\t")
 		mot=tab[0].strip()
-		freq[mot]=map(int, list(tab[1].strip("[").strip("]").replace(" ", "").split(",")))
+		freq[mot]=list(map(int, list(tab[1].strip("[").strip("]").replace(" ", "").split(","))))
 		nbAnnee[mot]=int(tab[2])
-		classes[mot]=map(int, list(tab[3].strip().strip("[").strip("]").replace(" ", "").split(",")))
-		classesnorm[mot]=map(float, list(tab[4].strip().strip("[").strip("]").replace(" ", "").split(",")))
+		classes[mot]=list(map(int, list(tab[3].strip().strip("[").strip("]").replace(" ", "").split(","))))
+		classesnorm[mot]=list(map(float, list(tab[4].strip().strip("[").strip("]").replace(" ", "").split(","))))
 		dico.add(mot)
 		cpt+=1
 	except IndexError:

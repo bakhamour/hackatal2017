@@ -14,7 +14,7 @@ for ligne in fichier:
 	try:
 		tab=ligne.split("\t")
 		mot=tab[0]
-		freq=map(int, list(tab[1].strip("[").strip("]").replace(" ", "").split(",")))
+		freq=list(map(int, list(tab[1].strip("[").strip("]").replace(" ", "").split(","))))
 		nbAnnee=int(tab[2])
 		classes=tab[3]
 		nbClasse=0
@@ -28,7 +28,7 @@ for ligne in fichier:
 	except IndexError:
 		error+=1
 		pass
-print cpt
+print(cpt)
 fichier =open("voc_freqmin"+str(borneMin)+"_docmax"+str(borneMax)+"_classemax"+str(nbClasseMax), "w")
 for mot in dico:
 	fichier.write(dico[mot]+"\n")

@@ -40,17 +40,17 @@ for ligne in fichier:
 	try:
 		tab=ligne.split("\t")
 		mot=tab[0].strip()
-		freq[mot]=map(int, list(tab[1].strip("[").strip("]").replace(" ", "").split(",")))
+		freq[mot]=list(map(int, list(tab[1].strip("[").strip("]").replace(" ", "").split(","))))
 		nbAnnee[mot]=int(tab[2])
-		classes[mot]=map(int, list(tab[3].strip().strip("[").strip("]").replace(" ", "").split(",")))
-		classesnorm[mot]=map(float, list(tab[4].strip().strip("[").strip("]").replace(" ", "").split(",")))
+		classes[mot]=list(map(int, list(tab[3].strip().strip("[").strip("]").replace(" ", "").split(","))))
+		classesnorm[mot]=list(map(float, list(tab[4].strip().strip("[").strip("]").replace(" ", "").split(","))))
 		dico.add(mot)
 		cpt+=1
 	except IndexError:
 		error+=1
 		pass
-print cpt
-print error
+print(cpt)
+print(error)
 
 
 fichier =open("vocDistance-"+lemot+".tsv", "w")
